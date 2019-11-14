@@ -1,6 +1,7 @@
 package com.edgetech.first.contollers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,7 +12,13 @@ public class WelcomeController {
     public String welcome() {
         return "Student Name: " + eric.getName() + "<br>" + "Student age: " + eric.getAge();
     }
+
+    @RequestMapping("/whatsmyname")
+    public String myName(@RequestParam("name") String name, @RequestParam("age") int age) {
+        return "your name is " + name + "<br>" + "your age is " + age;
+    }
 }
+
 
 class WelcomeService {
     public String returnWelcomeMessage() {
